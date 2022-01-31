@@ -1,0 +1,123 @@
+<nav class="navbar navbar-light bg-light">
+	{{>nav}}
+</nav>
+<div class="container mt-3">
+	<h1>Edit a House</h1>
+	<form>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"
+				>Short Title</label
+			>
+			<input
+				type="text"
+				class="form-control"
+				required
+				placeholder="Luxury Villa in Chaweng"
+			/>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label"
+				>Description</label
+			>
+			<textarea
+				class="form-control"
+				id="exampleFormControlTextarea1"
+				rows="6"
+				min
+				length="20"
+				required
+				placeholder="Stylish, tropical, luxurious, airy and absolutely stunning view over the bay of Chaweng Beach, this villa combines form and function, enjoying magnificent views of Samui's small islands and the sea beyond. With 520sqm of indoor/outdoor living space with 7 ensuite bedrooms, large living area, infinity pool, garden, air conditioned gym, professional pool table, bbq and Sala, this villa is perfect for upto 14 adults. With 260sqm of liviing space and 260sqm of outdoor space."
+			></textarea>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlInput1" class="form-label"
+				>Number of Rooms</label
+			>
+			<input type="number" class="form-control" required placeholder="4" />
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label"
+				>Location</label
+			>
+			<select class="form-select" aria-label="Default select example">
+				<option selected>KohSamui</option>
+				<option value="1">Koh Phagnan</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+			</select>
+		</div>
+		<div class="mb-3">
+			<label for="exampleFormControlTextarea1" class="form-label"
+				>Price(per night)</label
+			>
+			<div class="input-group mb-3">
+				<span class="input-group-text" id="basic-addon1">$</span>
+				<input
+					type="number"
+					class="form-control"
+					aria-label="price"
+					aria-describedby="basic-addon1"
+					min="1"
+					placeholder="350"
+				/>
+			</div>
+			<div class="mb-3">
+				<label for="exampleFormControlInput1" class="form-label"
+					>Add Photos(up to 9)</label
+				>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					required
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png/"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+				<input
+					type="url"
+					class="form-control mb-1"
+					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+				/>
+			</div>
+			<button class="btn btn-primary m-3" type="submit">
+				Save Changes</button
+			><br />
+			<button class="btn btn-danger m-3" type="submit">
+				Delete House
+			</button>
+		</div>
+	</form>
+</div>

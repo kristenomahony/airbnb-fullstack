@@ -1,0 +1,96 @@
+.no-border {
+  border-color: white;
+}
+.house-name {
+  width: 200px;
+}
+
+.d-flex {
+  width: 100%;
+}
+.thumbs {
+  width: 20px;
+  height: 20px;
+}
+.pop-up {
+  width: 300px;
+  margin-left: 200px;
+}
+.authentication {
+  margin-top: 200px;
+}
+.signup {
+  margin-top: 120px;
+  margin-left: 200px;
+}
+.logo {
+  width: 80px;
+  height: 60px;
+  margin-left: 180px;
+  margin-top: 20px;
+}
+
+.logo-lg {
+  width: 200px;
+  height: 80px;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.logo-lgr {
+  width: 200px;
+  height: 80px;
+  margin-left: 290px;
+  margin-top: 50px;
+}
+.profile {
+  height: 100%;
+}
+.error {
+  font-family: Courier;
+}
+.avatar {
+  width: 25px;
+  height: 25px;
+  border-radius: 10px;
+}
+.avatar-lg {
+  width: 35px;
+  height: 35px;
+  border-radius: 15px;
+}
+
+.fa-thumbs-down {
+  color: red;
+}
+
+.fa-thumbs-up {
+  color: #008080;
+}
+.btn-primary {
+  background-color: #008080;
+}
+.btn-primary:hover {
+  background-color: #1ea1a1;
+}
+
+.teal {
+  color: #008080;
+}
+.thumbs {
+  border-color: white;
+  width: 30px;
+  height: 30px;
+}
+.card-link {
+  color: #008080;
+}
+
+.btn-outline-success:hover {
+  background-color: #008080;
+}
+.card-img {
+  background-image: url(https://res.cloudinary.com/dsko6ntfj/image/upload/v1642399115/portal/web%20development%20beginners/05%20Project%20Airbnb/assets/thailand.jpg);
+}
+.form-floating {
+  width: 700px;
+}

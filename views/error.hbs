@@ -1,2 +1,13 @@
-{{message}}
-{{error.stack}}
+
+
+<nav class="navbar navbar-light bg-light">
+	{{>nav}}
+</nav>
+<div class="alert alert-danger m-5" role="alert">
+	{{message}}
+</div>
+<div class="error m-5">
+	<p class="error">
+		{{error.stack}}
+	</p>
+</div>
