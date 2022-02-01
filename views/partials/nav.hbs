@@ -8,6 +8,7 @@
 			/>
 		</a>
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+			{{#if user}}
 			<a class="btn btn-outline-secondary me-md-2"
 				class="btn btn-outline-secondary"
 				 href="/profile">{{user.name}}
@@ -21,6 +22,11 @@
 			<button class="btn btn-outline-secondary" class="btn btn-outline-secondary me-md-2">
 				<a href="/auth/logout">Logout</a>
 			</button>
+			{{else}}
+			<button class="btn btn-outline-secondary" class="btn btn-outline-secondary me-md-2">
+				<a href="/auth/login">Login</a>
+			</button>
 		</div>
 	</div>
+	{{/if}}
 </nav>

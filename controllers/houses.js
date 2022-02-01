@@ -4,24 +4,24 @@ const router = express.Router()
 // Views
 
 router.get('/', (req, res) => {
-  res.render('houses/list')
+  res.render('houses/list', { user: req.user })
 })
 
 router.get('/create', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/create')
+    res.render('houses/create', { user: req.user })
   } else {
     res.redirect('/auth/login')
   }
 })
 
 router.get('/:id', (req, res) => {
-  res.render('houses/edit')
+  res.render('houses/edit', { user: req.user })
 })
 
 router.get('/:id/edit', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/edit')
+    res.render('houses/edit', { user: req.user })
   } else {
     res.redirect('/auth/login')
   }

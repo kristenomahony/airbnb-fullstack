@@ -3,7 +3,7 @@ const router = express.Router()
 
 // Views
 router.get('/', (req, res) => {
-  res.render('profile')
+  res.render('profile', { user: req.user })
 })
 router.post('/', (req, res) => {
   if (req.isAuthenticated()) {

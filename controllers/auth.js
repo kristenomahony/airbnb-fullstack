@@ -28,18 +28,16 @@ router.get('/logout', (req, res, next) => {
 
 router.post('/login', async (req, res, next) => {
   try {
-    let loggedUser = await Users.findOne({ user: req.body.user })
+    let loggedUser = await Users.findOne({
+      email: req.body.email,
+      password: req.body.password
+    })
     if (loggedUser) {
       req.login(loggedUser, err => {
         res.redirect('/houses')
-        if (err) {
-          throw err
-        } else {
-          throw new Error('Ooops something went wrong!')
-        }
       })
     } else {
-      throw err
+      throw new Error('Email or password is wrong!')
     }
   } catch (err) {
     next(err)
