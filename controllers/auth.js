@@ -10,34 +10,31 @@ router.get('/signup', (req, res) => {
   res.render('signup')
 })
 router.get('/logout', (req, res) => {
-  res.render('logout')
+  res.redirect('/login')
 })
 router.post('/login', async (req, res) => {
-  res.render('login')
+  res.redirect('/houses')
 })
 const Users = require('../models/users')
 
 router.post('/signup', async (req, res, next) => {
   try {
-    let user = await Users.create(req.body)
-    req.login(user, err => {
-      if (err) {
-        throw err
-      } else {
-        res.redirect('/houses')
-      }
-    })
+    let foundUser = await Users.findOne({ email: req.body.email })
+    if (foundUser) {
+      throw new Error('User already exists!')
+    } else {
+      let user = await Users.create(req.body)
+      req.login(user, err => {
+        if (err) {
+          throw err
+        } else {
+          res.redirect('/houses')
+        }
+      })
+    }
   } catch (err) {
     next(err)
   }
 })
-// req.login(user, err => {
-//   if (Users.findOne({ email: req.body.email })) {
-//     throw new Error('user already exists!')
-//   }
-//   next(err)
-// })
-
-// }
 
 module.exports = router
