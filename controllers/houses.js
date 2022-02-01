@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-
+const Houses = require('../models/houses')
 // Views
 
 router.get('/', (req, res) => {
@@ -27,13 +27,24 @@ router.get('/:id/edit', (req, res) => {
   }
 })
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
   if (req.isAuthenticated()) {
     res.render('/')
   } else {
     res.redirect('/auth/login')
   }
+  try {
+    let newHouse = House.create(req.body)
+    if (newHouse) {
+      res.redirect('/houses')
+    } else {
+      throw err
+    }
+  } catch (err) {
+    next(err)
+  }
 })
+
 router.patch('/:id', (req, res) => {
   if (req.isAuthenticated()) {
     res.render('/houses/one')
