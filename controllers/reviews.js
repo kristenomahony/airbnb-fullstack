@@ -6,7 +6,11 @@ router.get('/', (req, res) => {
   res.render('profile')
 })
 router.post('/', (req, res) => {
-  res.render('hello')
+  if (req.isAuthenticated()) {
+    res.redirect('/houses')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 // Export
 module.exports = router

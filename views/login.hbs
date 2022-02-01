@@ -15,13 +15,14 @@
 						class="card-img-top img-thumbnail no-border logo-lg"" alt="..."
 						/>
 						<div class="card-body">
-							<form action="auth/login" method= "post">
+							<form action="/auth/login" method= "post">
 								<div class="mb-3">
 									<label for="exampleFormControlInput1" class="form-label"
 										>Email address</label
 									>
 									<input
 										type="email"
+										name="email"
 										class="form-control mb-3"
 										id="exampleFormControlInput1"
 									/>
@@ -31,15 +32,17 @@
 										>
 										<input
 											type="password"
+											name="password"
 											class="form-control"
 											id="exampleFormControlInput1"
 										/>
 									</div>
 								</div>
-								<a href="#" class="btn btn-primary mb-3">Login</a>
+								<button class="btn btn-primary mb-3">Login
+								</button>
 							</form>
 							<small>New to AirBnB?</small>
-							<a href="#" class="card-link">Sign Up</a>
+							<a href="auth/signup" class="card-link">Sign Up</a>
 						</div>
 					</div>
 				</div>

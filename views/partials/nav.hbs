@@ -8,24 +8,18 @@
 			/>
 		</a>
 		<div class="d-grid gap-2 d-md-flex justify-content-md-end">
-			<button
-				<a href="/profile">
-				class="btn btn-outline-secondary me-md-2"
+			<a class="btn btn-outline-secondary me-md-2"
 				class="btn btn-outline-secondary"
-
-			>
-				<span>
-					<img
+				 href="/profile">{{user.name}}
+				 <img
 						class="avatar"
-						src="https://randomuser.me/api/portraits/men/11.jpg"
+						src="{{user.avatar}}"
 						alt=""
 					/>
-				</span>
-				Tony Russo
-				</a>
-			</button>
-			<button class="btn btn-outline-secondary">
-				<a href="/auth/login">Logout</a>
+
+	  	</a>
+			<button class="btn btn-outline-secondary" class="btn btn-outline-secondary me-md-2">
+				<a href="/auth/logout">Logout</a>
 			</button>
 		</div>
 	</div>

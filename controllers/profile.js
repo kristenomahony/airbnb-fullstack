@@ -2,14 +2,21 @@ const express = require('express')
 const router = express.Router()
 
 // Views
+
 router.get('/', (req, res) => {
-  res.render('profile')
+  if (req.isAuthenticated()) {
+    res.render('profile')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
-router.get('/', (req, res) => {
-  res.render('profile')
-})
-router.patch('/:id', (req, res) => {
-  res.render('hello')
+
+router.patch('/', (req, res) => {
+  if (req.isAuthenticated()) {
+    res.render('profile')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 // Export
 module.exports = router

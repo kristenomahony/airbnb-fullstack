@@ -3,8 +3,12 @@ const router = express.Router()
 
 // Views
 router.post('/', (req, res) => {
-  res.render('bookings')
-})
+	if (req.isAuthenticated()) {
+		res.render('bookings')
+	} else {
+		res.redirect('/auth/login')
+	}
+  })
 
 // Export
 module.exports = router

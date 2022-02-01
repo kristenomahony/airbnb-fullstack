@@ -6,23 +6,47 @@ const router = express.Router()
 router.get('/', (req, res) => {
   res.render('houses/list')
 })
+
 router.get('/create', (req, res) => {
-  res.render('houses/create')
+  if (req.isAuthenticated()) {
+    res.render('houses/create')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
+
 router.get('/:id', (req, res) => {
   res.render('houses/edit')
 })
+
 router.get('/:id/edit', (req, res) => {
-  res.render('houses/edit')
+  if (req.isAuthenticated()) {
+    res.render('houses/edit')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
+
 router.post('/', (req, res) => {
-  res.render('house')
+  if (req.isAuthenticated()) {
+    res.render('/')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 router.patch('/:id', (req, res) => {
-  res.render('edit')
+  if (req.isAuthenticated()) {
+    res.render('/houses/one')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 router.delete('/:id', (req, res) => {
-  res.send('house')
+  if (req.isAuthenticated()) {
+    res.render('houses/one')
+  } else {
+    res.redirect('/auth/login')
+  }
 })
 // Export
 module.exports = router

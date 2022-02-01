@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const passport = require('passport')
+const Users = require('../models/users')
 
 // Views
 router.get('/login', (req, res) => {
@@ -9,13 +10,41 @@ router.get('/login', (req, res) => {
 router.get('/signup', (req, res) => {
   res.render('signup')
 })
-router.get('/logout', (req, res) => {
-  res.redirect('/login')
+
+router.get('/logout', (req, res, next) => {
+  try {
+    req.logout()
+    req.session.destroy(err => {
+      if (err) {
+        next(err)
+      }
+      res.clearCookie('connect.sid')
+      res.redirect('/auth/login')
+    })
+  } catch (err) {
+    throw err
+  }
 })
-router.post('/login', async (req, res) => {
-  res.redirect('/houses')
+
+router.post('/login', async (req, res, next) => {
+  try {
+    let loggedUser = await Users.findOne({ user: req.body.user })
+    if (loggedUser) {
+      req.login(loggedUser, err => {
+        res.redirect('/houses')
+        if (err) {
+          throw err
+        } else {
+          throw new Error('Ooops something went wrong!')
+        }
+      })
+    } else {
+      throw err
+    }
+  } catch (err) {
+    next(err)
+  }
 })
-const Users = require('../models/users')
 
 router.post('/signup', async (req, res, next) => {
   try {
