@@ -13,7 +13,7 @@
 						class="card-img-top img-thumbnail no-border logo-lgr"
 					/>
 					<div class="card-body">
-						<form>
+						<form action="/auth/signup" method="post">
 							<div class="mb-3">
 								<label for="exampleFormControlInput1" class="form-label"
 									>Your Full Name</label
@@ -22,6 +22,7 @@
 									type="text"
 									class="form-control required mb-4"
 									id="exampleFormControlInput1"
+									name="name"
 								/>
 								<label for="exampleFormControlInput1" class="form-label"
 									>Profile Picture</label
@@ -31,6 +32,7 @@
 									class="form-control required mb-4"
 									id="exampleFormControlInput1"
 									placeholder="http://"
+									name="avatar"
 								/>
 								<label
 									for="exampleFormControlInput1"
@@ -40,6 +42,7 @@
 								<input
 									type="email"
 									class="form-control required mb-4"
+									name="email"
 									id="exampleFormControlInput1"
 								/>
 								<div class="mb-3">
@@ -49,14 +52,15 @@
 									<input
 										type="password"
 										class="form-control required mb-5"
+										name="password"
 										id="exampleFormControlInput1"
 									/>
 								</div>
 							</div>
-							<a href="#" class="btn btn-primary mb-3">Login</a>
+							<button class="btn btn-primary mb-3">Sign up</button>
 						</form>
-						<small>New to AirBnB?</small>
-						<a href="#" class="card-link">Sign Up</a>
+						<small>Already have an account?</small>
+						<a href="#" class="card-link">Log in</a>
 					</div>
 				</div>
 			</div>
