@@ -16,9 +16,14 @@ router.get('/create', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
-  res.render('houses/edit', { user: req.user })
-})
+  // find houses
+  // populate host
+  // pass house to template
+  // let house = await Houses.findById(req.params.id).populate('host')
 
+  res.render('houses/one')
+})
+// , { user: req.user, house }
 router.get('/:id/edit', (req, res) => {
   if (req.isAuthenticated()) {
     res.render('houses/edit', { user: req.user })
@@ -27,18 +32,14 @@ router.get('/:id/edit', (req, res) => {
   }
 })
 
-router.post('/', (req, res, next) => {
-  if (req.isAuthenticated()) {
-    res.render('/')
-  } else {
-    res.redirect('/auth/login')
-  }
+router.post('/', async (req, res, next) => {
   try {
-    let newHouse = House.create(req.body)
-    if (newHouse) {
-      res.redirect('/houses')
+    if (!req.isAuthenticated()) {
+      await res.redirect('/auth/login')
     } else {
-      throw err
+      // req.body.host = req.body._id
+      let house = await Houses.create(req.body)
+      res.redirect(`/houses/${house._id}`)
     }
   } catch (err) {
     next(err)
@@ -47,14 +48,14 @@ router.post('/', (req, res, next) => {
 
 router.patch('/:id', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('/houses/one')
+    res.render('/one')
   } else {
     res.redirect('/auth/login')
   }
 })
 router.delete('/:id', (req, res) => {
   if (req.isAuthenticated()) {
-    res.render('houses/one')
+    res.render('/one')
   } else {
     res.redirect('/auth/login')
   }
