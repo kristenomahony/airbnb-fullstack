@@ -3,7 +3,7 @@
 </nav>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 	<div class="container-fluid">
-		<form class="d-flex">
+		<form method ="get" action ="/houses" class="d-flex">
 			<div class="input-group m-3">
 				<span class="input-group-text">
 					<i class="fas fa-map-marker-alt"></i>
@@ -73,7 +73,7 @@
 		{{#each house as |house|}}
 		<div class="col">
 			<div class="card mb-3">
-				<a href="/houses{{house._id}}">
+				<a href="/houses/{{house._id}}">
 				<img
 					src="{{house.photos.[0]}}"
 					class="card-img-top"
