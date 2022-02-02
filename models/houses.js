@@ -9,17 +9,16 @@ module.exports = mongoose.model('houses', {
   },
   host: {
     type: ObjectId,
-    ref: 'users'
-    // required: true
+    ref: 'users',
+    required: true
   },
   location: {
     type: String,
     required: true
   },
-  photos: {
-    type: [String],
-    required: true
-  },
+
+  photos: [{ type: String }],
+
   price: {
     type: Number,
     required: true

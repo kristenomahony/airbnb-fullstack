@@ -3,8 +3,13 @@ const router = express.Router()
 const Houses = require('../models/houses')
 // Views
 
-router.get('/', (req, res) => {
-  res.render('houses/list', { user: req.user })
+router.get('/', async (req, res, next) => {
+  try {
+    let house = await Houses.find(req.body)
+    res.render('houses/list', { house, user: req.user })
+  } catch (err) {
+    next(err)
+  }
 })
 
 router.get('/create', (req, res) => {
@@ -15,13 +20,22 @@ router.get('/create', (req, res) => {
   }
 })
 
-router.get('/:id', (req, res) => {
-  // find houses
-  // populate host
-  // pass house to template
-  // let house = await Houses.findById(req.params.id).populate('host')
+router.get('/:id', async (req, res, next) => {
+  try {
+    // req.body.host = req.body._id
+    let house = await Houses.findById(req.params.id).populate('host')
+    // console.log(house)
 
-  res.render('houses/one')
+    res.render('houses/one', { house, user: req.user._id })
+    // find houses
+    // populate host
+    // pass house to template
+    // let house = await Houses.findById(req.params.id).populate('host')
+    // res.render('houses/${house._id}', { user: req.user, house })
+    // { user: req.user, house })
+  } catch (err) {
+    next(err)
+  }
 })
 // , { user: req.user, house }
 router.get('/:id/edit', (req, res) => {
@@ -37,8 +51,19 @@ router.post('/', async (req, res, next) => {
     if (!req.isAuthenticated()) {
       await res.redirect('/auth/login')
     } else {
+      // console.log(req.body)
+
+      req.body.host = req.user._id
+
+      // let person = {
+      // 	name: 'Kris'
+      // }
+      // person.lastname = 'Omaha'
+      // console.log(person);
+
       // req.body.host = req.body._id
       let house = await Houses.create(req.body)
+      console.log(house)
       res.redirect(`/houses/${house._id}`)
     }
   } catch (err) {
