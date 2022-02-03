@@ -13,6 +13,7 @@ module.exports = mongoose.model('houses', {
   },
   date: {
     type: Date,
+    default: Date.now,
     required: true
   },
   house: {

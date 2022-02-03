@@ -8,7 +8,7 @@
 				<span class="input-group-text">
 					<i class="fas fa-map-marker-alt"></i>
 				</span>
-				<select class="form-select" aria-label="Default select example">
+				<select name="location" class="form-select" aria-label="Default select example">
 					<option selected>Any location</option>
 					<option value="1">Koh Phagnan</option>
 					<option value="2">Koh Samui</option>
@@ -21,7 +21,7 @@
 					<i class="fas fa-house-user"></i>
 				</span>
 
-				<select class="form-select" aria-label="Default select example">
+				<select name ="room" class="form-select" aria-label="Default select example">
 					<option selected>Any Rooms</option>
 					<option value="1">1</option>
 					<option value="2">2</option>
@@ -31,7 +31,7 @@
 			<!-- rooms -->
 			<div class="input-group m-3">
 				<span class="input-group-text" id="basic-addon1">$</span>
-				<select
+				<select name="price"
 					class="form-select"
 					aria-label="Default select example"
 					type="number"
@@ -45,7 +45,7 @@
 			<!-- max price -->
 			<div class="input-group m-3">
 				<span class="input-group-text" id="basic-addon1">$</span>
-				<select class="form-select" aria-label="Default select example">
+				<select name="sort" class="form-select" aria-label="Default select example">
 					<option selected>Price(low to high)</option>
 					<option value="1">Price(high to low)</option>
 				</select>
@@ -54,6 +54,7 @@
 
 			<div class="col">
 				<input
+				name="title"
 					type="text"
 					class="form-control house-name mt-3"
 					placeholder="House name"

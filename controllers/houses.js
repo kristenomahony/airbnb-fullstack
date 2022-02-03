@@ -1,12 +1,46 @@
 const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses')
+// const moment = require('moment')
 // Views
-
+//let newDate = moment(booking.date).format('DD MM YY')
 router.get('/', async (req, res, next) => {
   try {
     let house = await Houses.find(req.body)
-    res.render('houses/list', { house, user: req.user })
+    let search = req.query
+
+    const filterHouses = (house, search) => {
+      let filteredHouses = []
+      house.forEach((h, i) => {
+        if (h.rooms == search.room) {
+          filteredHouses.push(h)
+        }
+      })
+      return filteredHouses
+    }
+
+    let results = filterHouses(house, search)
+    console.log(results)
+    res.render('houses/list', { house, results, user: req.user })
+    // console.log(filterHouses(house, search))
+
+    // const filterHouses = house => {
+    //   let filteredHouses = []
+    //   if (req.query.rooms == req.body.rooms) {
+    //     filteredHouses.push(req.body)
+    //   }
+    //   return filteredHouses
+    // }
+    // filterHouses(house)
+
+    // house.forEach((h, i) => {
+    // if ((h.rooms = req.query.rooms)) {
+
+    // }
+    // })
+    // for (rooms in req.query) {
+    //   // console.log(`${rooms} ${req.query[rooms]}`)
+    // }
   } catch (err) {
     next(err)
   }
@@ -85,5 +119,7 @@ router.delete('/:id', (req, res) => {
     res.redirect('/auth/login')
   }
 })
+// Houses.findByIdAndDelete(req.params.id)
+// in the form use action="/houses/{{houses._id}}?_mthod=patch" method="post"
 // Export
 module.exports = router
