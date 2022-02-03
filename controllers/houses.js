@@ -6,41 +6,13 @@ const Houses = require('../models/houses')
 //let newDate = moment(booking.date).format('DD MM YY')
 router.get('/', async (req, res, next) => {
   try {
-    let house = await Houses.find(req.body)
-    let search = req.query
+    let search = {}
+    // if (req.query.room != "") {search.rooms} add each null to search {obj}
+    let house = await Houses.find({
+      location: req.query.location
+    })
 
-    const filterHouses = (house, search) => {
-      let filteredHouses = []
-      house.forEach((h, i) => {
-        if (h.rooms == search.room) {
-          filteredHouses.push(h)
-        }
-      })
-      return filteredHouses
-    }
-
-    let results = filterHouses(house, search)
-    console.log(results)
-    res.render('houses/list', { house, results, user: req.user })
-    // console.log(filterHouses(house, search))
-
-    // const filterHouses = house => {
-    //   let filteredHouses = []
-    //   if (req.query.rooms == req.body.rooms) {
-    //     filteredHouses.push(req.body)
-    //   }
-    //   return filteredHouses
-    // }
-    // filterHouses(house)
-
-    // house.forEach((h, i) => {
-    // if ((h.rooms = req.query.rooms)) {
-
-    // }
-    // })
-    // for (rooms in req.query) {
-    //   // console.log(`${rooms} ${req.query[rooms]}`)
-    // }
+    res.render('houses/list', { house, user: req.user })
   } catch (err) {
     next(err)
   }
