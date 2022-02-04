@@ -7,7 +7,7 @@
 			<div class="card" style="width: 100%;">
 				<img
 					src="{{house.photos.[0]}}"
-					class="card-img-top"
+					class="card-img-top photo" id ="lrgphoto"
 				/>
 			</div>
 		</div>
@@ -18,7 +18,7 @@
 							<div>
 								<img
 					    	src="{{photo}}"
-								class="card-img-top"
+								class="card-img-top photo"
 
 								/>
 							</div>
@@ -77,18 +77,19 @@
 			</div>
 		</div>
 		<div class="col">
-			<form>
+			<form action="/bookings" method="post">
 				<div class="card mt-5 pop-up shadow p-3 mb-5 bg-body rounded">
 					<div class="card-body">
 						<h5 class="card-title">${{house.price}}/night</h5>
 						<span>0 reviews</span>
+						<input type="hidden" name="house" value="{{house._id}}" />
 						<textarea
-							class="form-control mt-3"
+							name="message" class="form-control mt-3"
 							placeholder="Send the host a message..."
 							id="floatingTextarea2"
 							style="height: 150px"
 						></textarea>
-						<a href="#" class="btn btn-primary mt-4">Request Booking</a>
+						<button type="submit" class="btn btn-primary mt-4">Request Booking</button>
 					</div>
 				</div>
 			</form>

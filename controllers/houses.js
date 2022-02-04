@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Houses = require('../models/houses')
+const Users = require('../models/users')
 // const moment = require('moment')
 // Views
 //let newDate = moment(booking.date).format('DD MM YY')
@@ -44,11 +45,17 @@ router.get('/:id', async (req, res, next) => {
   }
 })
 // , { user: req.user, house }
-router.get('/:id/edit', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('houses/edit', { user: req.user })
-  } else {
-    res.redirect('/auth/login')
+router.get('/:id/edit', async (req, res, next) => {
+  try {
+    if (!req.isAuthenticated()) {
+      res.redirect('/auth/login')
+    } else {
+      let house = await Houses.findById(req.params.id)
+
+      res.render('houses/edit', { user: req.user, house })
+    }
+  } catch (err) {
+    next(err)
   }
 })
 
@@ -77,18 +84,36 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.patch('/:id', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('/one')
-  } else {
-    res.redirect('/auth/login')
+router.patch('/:id', async (req, res, next) => {
+  try {
+    if (!req.isAuthenticated()) {
+      res.redirect('/auth/login')
+    } else {
+      let updatedHouse = await Houses.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        {
+          new: true
+        }
+      )
+
+      res.redirect(`/houses/${updatedHouse._id}`)
+    }
+  } catch (err) {
+    next(err)
   }
 })
-router.delete('/:id', (req, res) => {
-  if (req.isAuthenticated()) {
-    res.render('/one')
-  } else {
-    res.redirect('/auth/login')
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    if (!req.isAuthenticated()) {
+      res.redirect('/auth/login')
+    } else {
+      let deletedHouse = await Houses.findByIdAndDelete(req.params.id)
+      res.redirect('/houses')
+    }
+  } catch (err) {
+    next(err)
   }
 })
 // Houses.findByIdAndDelete(req.params.id)

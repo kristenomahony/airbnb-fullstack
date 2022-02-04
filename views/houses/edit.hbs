@@ -3,16 +3,17 @@
 </nav>
 <div class="container mt-3">
 	<h1>Edit a House</h1>
-	<form>
+	<form action="/houses/{{house._id}}?_method=patch" method="post">
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"
-				>Short Title</label
+				>Short title</label
 			>
 			<input
+			name="title"
 				type="text"
 				class="form-control"
 				required
-				placeholder="Luxury Villa in Chaweng"
+				value="{{house.title}}"
 			/>
 		</div>
 		<div class="mb-3">
@@ -20,30 +21,32 @@
 				>Description</label
 			>
 			<textarea
+				name="description"
+
 				class="form-control"
 				id="exampleFormControlTextarea1"
 				rows="6"
 				min
 				length="20"
 				required
-				placeholder="Stylish, tropical, luxurious, airy and absolutely stunning view over the bay of Chaweng Beach, this villa combines form and function, enjoying magnificent views of Samui's small islands and the sea beyond. With 520sqm of indoor/outdoor living space with 7 ensuite bedrooms, large living area, infinity pool, garden, air conditioned gym, professional pool table, bbq and Sala, this villa is perfect for upto 14 adults. With 260sqm of liviing space and 260sqm of outdoor space."
+				placeholder="{{house.description}}"
 			></textarea>
 		</div>
 		<div class="mb-3">
 			<label for="exampleFormControlInput1" class="form-label"
 				>Number of Rooms</label
 			>
-			<input type="number" class="form-control" required placeholder="4" />
+			<input name="rooms" type="number" class="form-control" required value="{{house.rooms}}" />
 		</div>
 		<div class="mb-3">
 			<label for="exampleFormControlTextarea1" class="form-label"
 				>Location</label
 			>
 			<select class="form-select" aria-label="Default select example">
-				<option selected>KohSamui</option>
-				<option value="1">Koh Phagnan</option>
-				<option value="2">Two</option>
-				<option value="3">Three</option>
+				<option selected>{{house.location}}</option>
+				<option>Koh Phagnan</option>
+				<option>Koh Samui</option>
+				<option>Three</option>
 			</select>
 		</div>
 		<div class="mb-3">
@@ -53,12 +56,13 @@
 			<div class="input-group mb-3">
 				<span class="input-group-text" id="basic-addon1">$</span>
 				<input
+					name="price"
 					type="number"
 					class="form-control"
 					aria-label="price"
 					aria-describedby="basic-addon1"
 					min="1"
-					placeholder="350"
+					value="{{house.price}}"
 				/>
 			</div>
 			<div class="mb-3">
@@ -66,58 +70,63 @@
 					>Add Photos(up to 9)</label
 				>
 				<input
+				name="photo"
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 					required
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png/"
+					value="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					placeholder="{{house.photo}}"
 				/>
 				<input
 					type="url"
 					class="form-control mb-1"
-					placeholder="https://res.cloudinary.com/dsko6ntfj/image/upload/v1640295026/portal/web%20development%20beginners/05%20Project%20Airbnb/house%2001/house_01_01.png"
+					value="{{house.photo}}"
 				/>
 			</div>
+
 			<button class="btn btn-primary m-3" type="submit">
 				Save Changes</button
 			><br />
-			<button class="btn btn-danger m-3" type="submit">
+			</form>
+			<form action="/houses/{{house._id}}?_method=delete" method="post">
+			<button class="btn btn-danger m-3">
 				Delete House
 			</button>
+		</form>
 		</div>
-	</form>
+
 </div>

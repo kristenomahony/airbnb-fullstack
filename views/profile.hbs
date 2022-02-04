@@ -57,8 +57,9 @@
 			{{#if user}}
 			{{#each userHouses as |house|}}
 			<h2>My Listings</h2>
-			<form>
-				<a href="" class="btn btn-primary mt-5">List a House</a><br />
+			<form action="/houses/create" method="get">
+				<a href="/houses/create" class="btn btn-primary mt-5">List a House</a><br />
+			</form>
 				<div class="card mb-3 mt-5">
 					<div class="row g-0">
 						<div class="col-md-4">
@@ -75,15 +76,19 @@
 								<p class="card-text">
 									{{house.description}}
 								</p>
-								<button type="submit" class="btn btn-outline-secondary">
+								<form action="/houses/{{house._id}}/edit" method="get">
+								<button  class="btn btn-outline-secondary">
 									Edit
 								</button>
+							</form>
+							<form action="/houses/{{house._id}}" method="get">
 								<button
 									type="submit"
 									class="btn btn-outline-success success"
 								>
 									View
 								</button>
+							</form>
 								<button class="btn btn-danger m-3" type="submit">
 									Delete House
 								</button>
