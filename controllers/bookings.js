@@ -10,9 +10,14 @@ router.post('/', async (req, res, next) => {
     if (!req.isAuthenticated()) {
       res.redirect('/auth/login')
     } else {
+      req.body.author = req.user._id
+      req.body.description = req.body.message
+      // req.body.house._id = req.house._id
+      let house = await Houses.findById(req.params.id)
+
+      req.house._id = house._id
       let booking = await Bookings.create(req.body)
-      console.log(booking)
-      res.redirect(`/houses/${house._id}`)
+      res.redirect(`/houses/${house._id}`, { booking })
     }
   } catch (err) {
     next(err)

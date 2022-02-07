@@ -31,15 +31,8 @@ router.get('/:id', async (req, res, next) => {
   try {
     // req.body.host = req.body._id
     let house = await Houses.findById(req.params.id).populate('host')
-    // console.log(house)
 
     res.render('houses/one', { house, user: req.user._id })
-    // find houses
-    // populate host
-    // pass house to template
-    // let house = await Houses.findById(req.params.id).populate('host')
-    // res.render('houses/${house._id}', { user: req.user, house })
-    // { user: req.user, house })
   } catch (err) {
     next(err)
   }
@@ -64,19 +57,8 @@ router.post('/', async (req, res, next) => {
     if (!req.isAuthenticated()) {
       await res.redirect('/auth/login')
     } else {
-      // console.log(req.body)
-
       req.body.host = req.user._id
-
-      // let person = {
-      // 	name: 'Kris'
-      // }
-      // person.lastname = 'Omaha'
-      // console.log(person);
-
-      // req.body.host = req.body._id
       let house = await Houses.create(req.body)
-      console.log(house)
       res.redirect(`/houses/${house._id}`)
     }
   } catch (err) {
